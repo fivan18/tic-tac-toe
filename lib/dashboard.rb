@@ -20,4 +20,8 @@ class Dashboard
         end
         false
     end
+
+    def add_move(place, symbol)
+        @arr[place.to_i] = symbol
+    end
 end
