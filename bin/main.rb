@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require "tty-prompt"
+require_relative "../lib/player"
 
 def print_dashboard(arr)
     prompt = TTY::Prompt.new
@@ -17,37 +18,33 @@ def print_dashboard(arr)
     end
 end 
 
-def get_players_name
+def get_players
     prompt = TTY::Prompt.new
 
-    players = Array.new(2, '')
-    while players[0] == players[1]
-        players[0] = prompt.ask("Alias for player 1?") do |q|
-            q.required true
-        end
-        players[1] = prompt.ask("Alias for player 2?") do |q|
-            q.required true
-        end
+    players = Array.new(2)
+    while players[0].nil? || players[0].alias_player == players[1].alias_player
+        players[0] = Player.new(prompt.ask("Alias for player 1?") { |q| q.required true }, '✘')
+        players[1] = Player.new(prompt.ask("Alias for player 2?") { |q| q.required true }, '●')
     end
     players.shuffle!
 end
 
-def play_game(current_player, players_name, dashboard)
+def play_game(current_player, players, dashboard)
     prompt = TTY::Prompt.new
 
-    3.times do |_num|              #this will for a while
-        current_player = current_player == players_name[0] ? players_name[1] : players_name[0]
+    9.times do |_num|           
+        current_player = current_player == 0 ? 1 : 0
         
         print_dashboard(dashboard)
     
-        place = prompt.ask("#{current_player}, chose a place (1-9)?") do |q|
+        place = prompt.ask("#{players[current_player].alias_player}, chose a place (1-9)?") do |q|
             q.in '1-9'
             q.messages[:range?] = 'Try again please...'
         end
-        dashboard[place.to_i] = '✘'
+        dashboard[place.to_i] = players[current_player].symbol
     end
 
-    prompt.ok("\n\n#{current_player} wins!!!!!")
+    prompt.ok("\n\n#{players[current_player].alias_player} wins!!!!!")
 end
 
 prompt = TTY::Prompt.new
@@ -55,12 +52,12 @@ prompt.ok('Get start with Tic Tac Toe')
 print_dashboard(%w[ none ✘ ✘ ● ✘ ● ✘ ● ✘ ● ])
 prompt.keypress("Press enter to continue...", keys: [:return])
 
-players_name = get_players_name()
+players = get_players()
 
 loop do 
-    current_player = players_name[0]
+    current_player = 0
     dashboard = %w[ none 1 2 3 4 5 6 7 8 9 ]
-    play_game(current_player, players_name, dashboard)   
+    play_game(current_player, players, dashboard)   
     
     break unless prompt.yes?("Do you like to play again?")
 end
