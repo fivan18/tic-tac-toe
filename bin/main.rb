@@ -34,20 +34,27 @@ def play_game(players)
     prompt = TTY::Prompt.new
 
     current_player = 0
-    dashboard = %w[ none 1 2 3 4 5 6 7 8 9 ]  # change this for a instance of Dashboard class
-    9.times do |_num|           # add the conditions
+    dashboard = Dashboard.new #kkkk
+    while dashboard.is_there_a_place? && !dashboard.is_there_a_winner? #kkk
         current_player = current_player == 0 ? 1 : 0
         
-        print_dashboard(dashboard) #correct this when change dashboard
+        print_dashboard(dashboard.arr) #kkk
     
         place = prompt.ask("#{players[current_player].alias_player}, chose a place (1-9)?") do |q|
             q.in '1-9'
             q.messages[:range?] = 'Try again please...'
         end
-        dashboard[place.to_i] = players[current_player].symbol #validate this line
+        dashboard.add_move(place, players[current_player].symbol) #validate this line
     end
 
-    prompt.ok("\n\n#{players[current_player].alias_player} wins!!!!!") # there is not be always a winner change this
+    print_dashboard(dashboard.arr)
+
+    if dashboard.is_there_a_winner?
+        prompt.ok("\n\n#{players[current_player].alias_player} wins!!!!!") # there is not be always a winner change this
+    else
+        prompt.ok("It is a tie..")
+    end
+
 end
 
 prompt = TTY::Prompt.new
