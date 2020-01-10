@@ -2,6 +2,7 @@
 
 require "tty-prompt"
 require_relative "../lib/player"
+require_relative "../lib/dashboard"
 
 def print_dashboard(arr)
     prompt = TTY::Prompt.new
@@ -29,9 +30,11 @@ def get_players
     players.shuffle!
 end
 
-def play_game(current_player, players, dashboard)
+def play_game(players)
     prompt = TTY::Prompt.new
 
+    current_player = 0
+    dashboard = %w[ none 1 2 3 4 5 6 7 8 9 ]
     9.times do |_num|           
         current_player = current_player == 0 ? 1 : 0
         
@@ -55,9 +58,7 @@ prompt.keypress("Press enter to continue...", keys: [:return])
 players = get_players()
 
 loop do 
-    current_player = 0
-    dashboard = %w[ none 1 2 3 4 5 6 7 8 9 ]
-    play_game(current_player, players, dashboard)   
+    play_game(players)   
     
     break unless prompt.yes?("Do you like to play again?")
 end
