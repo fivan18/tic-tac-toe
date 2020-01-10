@@ -5,8 +5,4 @@ class Player
         @alias_player = alias_player
         @symbol = symbol
     end
-
-    def to_s
-        "#{@alias_player}: #{symbol}"
-    end
 end
