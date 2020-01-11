@@ -22,6 +22,8 @@ class Dashboard
     end
 
     def add_move(place, symbol)
+        return false if @arr[place.to_i] == '●' || @arr[place.to_i] == '✘'
         @arr[place.to_i] = symbol
+        true
     end
 end
