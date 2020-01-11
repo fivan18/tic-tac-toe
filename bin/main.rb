@@ -34,27 +34,35 @@ def play_game(players)
     prompt = TTY::Prompt.new
 
     current_player = 0
-    dashboard = Dashboard.new #kkkk
-    while dashboard.is_there_a_place? && !dashboard.is_there_a_winner? #kkk
-        current_player = current_player == 0 ? 1 : 0
-        
-        print_dashboard(dashboard.arr) #kkk
+    dashboard = Dashboard.new
+    while dashboard.is_there_a_place? && !dashboard.is_there_a_winner?      
+        print_dashboard(dashboard.arr)
     
-        place = prompt.ask("#{players[current_player].alias_player}, chose a place (1-9)?") do |q|
-            q.in '1-9'
-            q.messages[:range?] = 'Try again please...'
-        end
-        dashboard.add_move(place, players[current_player].symbol) #validate this line
+        place = prompt.ask(
+            "#{players[current_player].alias_player}," + 
+            " chose a place (1-9)? #{players[current_player].symbol}") do |q|
+                q.in '1-9'
+                q.messages[:range?] = 'Try again please...'
+            end
+        
+        current_player = current_player == 0 ? 1 : 0 if 
+            dashboard.add_move(place, players[current_player].symbol)
     end
+    current_player = current_player == 0 ? 1 : 0
+
+    display_result(current_player, players, dashboard) 
+end
+
+def display_result(current_player, players, dashboard) 
+    prompt = prompt = TTY::Prompt.new
 
     print_dashboard(dashboard.arr)
 
     if dashboard.is_there_a_winner?
-        prompt.ok("\n\n#{players[current_player].alias_player} wins!!!!!") # there is not be always a winner change this
+        prompt.ok("\n\n#{players[current_player].alias_player} wins!!!!!")
     else
-        prompt.ok("It is a tie..")
+        prompt.ok("It is a tie...")
     end
-
 end
 
 prompt = TTY::Prompt.new
