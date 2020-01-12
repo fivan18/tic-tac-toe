@@ -25,19 +25,83 @@ Programing (OOP) paradigm. It consist of an interface (bin/main.rb) and two clas
 - Inside the root directory of the game run `bundle install` on the command line
 
 ## Instructions to play the game
-1. Inside the root directory of the game run bin/main.rb and press enter
-  - ![screenshot](screenshots/1.PNG)
-2. Eter the players aliases (the game chose a player randomly to start the game)
-  - ![screenshot](screenshots/2.PNG)
-3. Each player choose different places to do their move untill someone wins or there are not more places in the dashboard
-  - ![screenshot](screenshots/3.PNG)
-  - ![screenshot](screenshots/4.PNG)
-  - ![screenshot](screenshots/5.PNG)
-  - ![screenshot](screenshots/6.PNG)
-  - ![screenshot](screenshots/7.PNG)
-  - ![screenshot](screenshots/8.PNG)
-4. Press (y/n) to play again or get out of the game
-  - ![screenshot](screenshots/9.PNG)
+1. Inside the root directory of the game run `bin/main.rb`
+  ```
+    $ bin/main.rb 
+    Get start with Tic Tac Toe
+       -------------
+       | ✘ | ✘ | ● |
+       -------------
+       | ✘ | ● | ✘ |
+       -------------
+       | ● | ✘ | ● |
+       -------------
+    Press enter to continue... 
+  ```
+2. Eter the players aliases (the game will chose a randomly player to start the game)
+  ```
+    Alias for player 1? Ivan
+    Alias for player 2? Lalo 
+  ```
+3. Each player choose different places to do their move until someone wins or there will not be more places in the dashboard
+  ```
+       -------------
+       | 1 | 2 | 3 |
+       -------------
+       | 4 | 5 | 6 |
+       -------------
+       | 7 | 8 | 9 |
+       -------------
+    Lalo, chose a place (1-9)? ● 1
+       -------------
+       | ● | 2 | 3 |
+       -------------
+       | 4 | 5 | 6 |
+       -------------
+       | 7 | 8 | 9 |
+       -------------
+    Ivan, chose a place (1-9)? ✘ 7
+       -------------
+       | ● | 2 | 3 |
+       -------------
+       | 4 | 5 | 6 |
+       -------------
+       | ✘ | 8 | 9 |
+       -------------
+    Lalo, chose a place (1-9)? ● 2
+       -------------
+       | ● | ● | 3 |
+       -------------
+       | 4 | 5 | 6 |
+       -------------
+       | ✘ | 8 | 9 |
+       -------------
+    Ivan, chose a place (1-9)? ✘ 8
+       -------------
+       | ● | ● | 3 |
+       -------------
+       | 4 | 5 | 6 |
+       -------------
+       | ✘ | ✘ | 9 |
+       -------------
+    Lalo, chose a place (1-9)? ● 3
+       -------------
+       | ● | ● | ● |
+       -------------
+       | 4 | 5 | 6 |
+       -------------
+       | ✘ | ✘ | 9 |
+       -------------
+
+
+    Lalo wins!!!!!
+  ```
+
+4. Press (y/n) keys to play again or get out of the game
+  ```
+    Do you like to play again? no
+    $
+  ```
 
 ## Authors
 
