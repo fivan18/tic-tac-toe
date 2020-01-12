@@ -38,7 +38,7 @@ Programing (OOP) paradigm. It consist of an interface ([main.rb](bin/main.rb)) a
        -------------
     Press enter to continue... 
   ```
-2. Eter the players aliases (the game will chose a randomly player to start the game)
+2. Enter the players aliases (the game will chose a randomly player to start the game)
   ```
     Alias for player 1? Ivan
     Alias for player 2? Lalo 
