@@ -1,6 +1,6 @@
 # Tic-Tac-Toe Game
 
-> Let's play Tic Tac Toe
+> Let's play [Tic Tac Toe](https://www.wikihow.com/Play-Tic-Tac-Toe)
 
 <p align="center">
     <img src="screenshots/meme-tic-tac-toe.jpg">
