@@ -30,22 +30,45 @@ def get_players
   players.shuffle!
 end
 
-def play_game(current_player, players_name, dashboard)
+def play_game(players)
   prompt = TTY::Prompt.new
 
-  3.times do |_num|              #this will for a while
-    current_player = current_player == players_name[0] ? players_name[1] : players_name[0]
-    
-    print_dashboard(dashboard)
+  current_player = 0
+  # this will be an object of the class Dashboard
+  dashboard = %w[ none 1 2 3 4 5 6 7 8 9 ] 
+  # this will change for a while statement and I will validate if there is a place to move
+  #   or if someone has won
+  9.times |_num|
+    # this will change becouse of Dashboard class
+    print_dashboard(dashboard) 
 
-    place = prompt.ask("#{current_player}, chose a place (1-9)?") do |q|
+    # this line will change because of Player class
+    place = prompt.ask("#{players[current_player]}, chose a place (1-9)?") do |q|
       q.in '1-9'
       q.messages[:range?] = 'Try again please...'
     end
-    dashboard[place.to_i] = '✘'
+    
+    # this line will execute if the move has been done 
+    current_player = current_player == 0 ? 1 : 0 
   end
+  current_player = current_player == 0 ? 1 : 0
 
-  prompt.ok("\n\n#{current_player} wins!!!!!")
+  display_result(current_player, players, dashboard) 
+end
+
+def display_result(current_player, players, dashboard) 
+  prompt = prompt = TTY::Prompt.new
+
+  # this will change becouse of Dashboard class
+  print_dashboard(dashboard)
+  
+  # validate if someone wins
+  if dashboard
+    #this will change because of Player class
+    prompt.ok("\n\n#{players[current_player]} wins!!!!!")
+  else
+    prompt.ok("It is a tie...")
+  end
 end
 
 prompt = TTY::Prompt.new
