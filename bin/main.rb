@@ -36,7 +36,7 @@ def play_game(players)
 
   current_player = 0
   dashboard = Dashboard.new
-  while dashboard.is_there_a_place? && !dashboard.is_there_a_winner?
+  while dashboard.there_a_place? && !dashboard.there_a_winner?
     print_dashboard(dashboard.arr)
 
     place = prompt.ask(
@@ -60,7 +60,7 @@ def display_result(current_player, players, dashboard)
 
   print_dashboard(dashboard.arr)
 
-  if dashboard.is_there_a_winner?
+  if dashboard.there_a_winner?
     prompt.ok("\n\n#{players[current_player].alias_player} wins!!!!!")
   else
     prompt.ok('It is a tie...')
