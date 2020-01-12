@@ -38,7 +38,7 @@ def play_game(players)
   dashboard = %w[ none 1 2 3 4 5 6 7 8 9 ] 
   # this will change for a while statement and I will validate if there is a place to move
   #   or if someone has won
-  9.times |_num|
+  9.times do |_num| 
     # this will change becouse of Dashboard class
     print_dashboard(dashboard) 
 
@@ -49,6 +49,7 @@ def play_game(players)
     end
     
     # this line will execute if the move has been done 
+    dashboard[place.to_i] = '✘'
     current_player = current_player == 0 ? 1 : 0 
   end
   current_player = current_player == 0 ? 1 : 0
@@ -76,22 +77,10 @@ prompt.ok('Get start with Tic Tac Toe')
 print_dashboard(%w[ none ✘ ✘ ● ✘ ● ✘ ● ✘ ● ])
 prompt.keypress("Press enter to continue...", keys: [:return])
 
-players_name = get_players_name()
+players = get_players()
 
 loop do 
-  current_player = players_name[0]
-  dashboard = %w[ none 1 2 3 4 5 6 7 8 9 ]
-  play_game(current_player, players_name, dashboard)   
-  
-  break unless prompt.yes?("Do you like to play again?")
+    play_game(players)   
+    
+    break unless prompt.yes?("Do you like to play again?")
 end
-
-
-
-
-
-
-
-
-
-
