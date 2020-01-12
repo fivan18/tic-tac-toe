@@ -6,8 +6,8 @@
     <img src="screenshots/meme-tic-tac-toe.jpg">
 </p>
 
-The main goal of this project was to build a Tic Tac Toe game putting in practice the Object Oriented 
-Programing (OOP) paradigm. It consist of an interface (bin/main.rb) and two classes (lib/dashboard.rb and lib/player.rb). For the interface I used [TTY prompt component](https://github.com/piotrmurach/tty-prompt#31-symbols).
+The main goal of this project was to build a Tic Tac Toe game getting practice the Object Oriented 
+Programing (OOP) paradigm. It consist of an interface ([main.rb](bin/main.rb)) and two classes ([dashboard.rb](lib/dashboard.rb) and [player.rb](lib/player.rb)). For the interface I used [TTY prompt component](https://github.com/piotrmurach/tty-prompt#31-symbols) to get a interactive command line prompt.
 
 ## Built With
 
