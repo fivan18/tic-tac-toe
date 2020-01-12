@@ -17,17 +17,15 @@ def print_dashboard(arr)
   end
 end 
 
-def get_players_name
+def get_players
   prompt = TTY::Prompt.new
 
-  players = Array.new(2, '')
-  while players[0] == players[1]
-    players[0] = prompt.ask("Alias for player 1?") do |q|
-      q.required true
-    end
-    players[1] = prompt.ask("Alias for player 2?") do |q|
-      q.required true
-    end
+  players = Array.new(2)
+  # This while block will change, there will be a class Player and instead of strings I will
+  #   work with instances of this class.
+  while players[0].nil? || players[0] == players[1]
+    players[0] = prompt.ask("Alias for player 1?") { |q| q.required true }
+    players[1] = prompt.ask("Alias for player 2?") { |q| q.required true }
   end
   players.shuffle!
 end
