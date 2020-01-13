@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Dashboard do
   let(:dashboard) { Dashboard.new }
 
@@ -20,7 +22,7 @@ RSpec.describe Dashboard do
       dashboard.add_move('1', '✘')
       dashboard.add_move('1', '●')
       expect(dashboard.arr).to eql(%w[none ✘ 2 3 4 5 6 7 8 9])
-    end  
+    end
 
     it 'choose a place with an integer' do
       expect(dashboard.add_move(5, '✘')).to eql(false)
@@ -46,7 +48,7 @@ RSpec.describe Dashboard do
     it 'doesn\'t modify a place that has been chosen with characters' do
       dashboard.add_move('char', '✘')
       expect(dashboard.arr).to eql(%w[none 1 2 3 4 5 6 7 8 9])
-    end  
+    end
   end
 
   describe '#there_a_place?' do
@@ -63,7 +65,7 @@ RSpec.describe Dashboard do
     it 'returns false because there are not places in the dashboard' do
       fill_places(%w[1 2 3 4 5 6 7 8 9], dashboard, '✘')
       expect(dashboard.there_a_place?).to eql(false)
-    end    
+    end
   end
 
   describe '#there_a_winner?' do

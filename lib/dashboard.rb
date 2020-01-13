@@ -31,7 +31,10 @@ class Dashboard
   end
 
   def add_move(place, symbol)
-    return false if !(place.class == String) || !place.match?(/^[1-9]$/) || (@arr[place.to_i] == '●' || @arr[place.to_i] == '✘')
+    return false if place.class != String ||
+                    !place.match?(/^[1-9]$/) ||
+                    @arr[place.to_i] == '●' ||
+                    @arr[place.to_i] == '✘'
 
     @arr[place.to_i] = symbol
     true

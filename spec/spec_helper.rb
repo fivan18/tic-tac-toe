@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './support/dashboard_helpers.rb'
 require_relative '../lib/dashboard.rb'
 
