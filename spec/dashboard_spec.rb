@@ -1,5 +1,3 @@
-require_relative '../lib/dashboard.rb'
-
 RSpec.describe Dashboard do
   let(:dashboard) { Dashboard.new }
 
@@ -49,6 +47,23 @@ RSpec.describe Dashboard do
       dashboard.add_move('char', '✘')
       expect(dashboard.arr).to eql(%w[none 1 2 3 4 5 6 7 8 9])
     end  
+  end
+
+  describe '#there_a_place?' do
+    it 'returns true because all the places are available in the dashboard' do
+      expect(dashboard.there_a_place?).to eql(true)
+    end
+
+    it 'returns true because there are places available in the dashboard' do
+      fill_places(%w[1 4], dashboard, '●')
+      fill_places(%w[2 9], dashboard, '✘')
+      expect(dashboard.there_a_place?).to eql(true)
+    end
+
+    it 'returns false because there are not places in the dashboard' do
+      fill_places(%w[1 2 3 4 5 6 7 8 9], dashboard, '✘')
+      expect(dashboard.there_a_place?).to eql(false)
+    end    
   end
 end
 
