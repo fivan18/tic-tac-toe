@@ -39,4 +39,13 @@ class Dashboard
     @arr[place.to_i] = symbol
     true
   end
+
+  def places_available
+    str = ''
+    @arr.each do |item|
+      str += item if /[123456789]/.match?(item)
+    end
+    str = "[#{str}]"
+    Regexp.new(str)
+  end
 end
