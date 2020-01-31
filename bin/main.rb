@@ -43,8 +43,8 @@ def play_game(players)
       "#{players[current_player].alias_player}," \
       " chose a place (1-9)? #{players[current_player].symbol}"
     ) do |q|
-      q.in '1-9'
-      q.messages[:range?] = 'Try again please...'
+      q.validate dashboard.places_available
+      q.messages[:valid?] = 'Invalid, enter again...'
     end
 
     current_player = current_player.zero? ? 1 : 0 if
