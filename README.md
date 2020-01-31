@@ -12,7 +12,7 @@ Programing (OOP) paradigm. It consist of an interface ([main.rb](bin/main.rb)) a
 ## Built With
 
 - Ruby
-- [TTY prompt component](https://github.com/piotrmurach/tty-prompt#31-symbols)
+- [TTY prompt component](https://github.com/piotrmurach/tty-prompt)
 
 ## How to install the game?
 
