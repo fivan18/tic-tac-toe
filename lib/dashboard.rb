@@ -45,6 +45,9 @@ class Dashboard
     @arr.each do |item|
       str += item if /[123456789]/.match?(item)
     end
+
+    return nil if str == ''
+
     str = "[#{str}]"
     Regexp.new(str)
   end

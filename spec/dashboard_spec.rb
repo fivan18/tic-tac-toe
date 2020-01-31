@@ -125,4 +125,18 @@ RSpec.describe Dashboard do
       expect(dashboard.there_a_winner?).to eql(false)
     end
   end
+
+  describe '#places_available' do
+    it 'has all the  places available' do
+      expect(dashboard.places_available).to eql(/[123456789]/)
+    end
+    it 'has some the  places available' do
+      fill_places(%w[1 2 3 7 9], dashboard, '✘')
+      expect(dashboard.places_available).to eql(/[4568]/)
+    end
+    it 'has no places available' do
+      fill_places(%w[1 2 3 4 5 6 7 8 9], dashboard, '✘')
+      expect(dashboard.places_available).to eql(nil)
+    end
+  end
 end
