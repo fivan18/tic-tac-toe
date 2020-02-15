@@ -37,6 +37,7 @@ def play_game(players)
   current_player = 0
   dashboard = Dashboard.new
   while dashboard.there_a_place? && !dashboard.there_a_winner?
+    system('clear')
     print_dashboard(dashboard.arr)
 
     place = prompt.ask(
@@ -52,6 +53,7 @@ def play_game(players)
   end
   current_player = current_player.zero? ? 1 : 0
 
+  system('clear')
   display_result(current_player, players, dashboard)
 end
 
@@ -67,6 +69,8 @@ def display_result(current_player, players, dashboard)
   end
 end
 
+system('clear')
+
 prompt = TTY::Prompt.new
 prompt.ok('Get start with Tic Tac Toe')
 print_dashboard(%w[none ✘ ✘ ● ✘ ● ✘ ● ✘ ●])
@@ -74,6 +78,8 @@ prompt.keypress('Press enter to continue...', keys: [:return])
 
 players = arr_players
 
+
+system('clear')
 loop do
   play_game(players)
 
