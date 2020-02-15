@@ -78,7 +78,6 @@ prompt.keypress('Press enter to continue...', keys: [:return])
 
 players = arr_players
 
-
 system('clear')
 loop do
   play_game(players)
