@@ -7,7 +7,7 @@
 </p>
 
 The main goal of this project was to build a Tic Tac Toe game getting practice the Object Oriented 
-Programing (OOP) paradigm. It consist of an interface ([main.rb](bin/main.rb)) and two classes ([dashboard.rb](lib/dashboard.rb) and [player.rb](lib/player.rb)). For the interface I used [TTY prompt component](https://github.com/piotrmurach/tty-prompt#31-symbols) to get a interactive command line prompt.
+Programing (OOP) paradigm. It consist of an interface ([main.rb](bin/main.rb)) and two classes ([dashboard.rb](lib/dashboard.rb) and [player.rb](lib/player.rb)). For the interface I used [TTY prompt component](https://github.com/piotrmurach/tty-prompt#31-symbols) to get an interactive command line prompt.
 
 ## Built With
 
@@ -16,16 +16,21 @@ Programing (OOP) paradigm. It consist of an interface ([main.rb](bin/main.rb)) a
 
 ## How to install the game?
 
-### Prerequisites
+### prerequisites
 - Ruby [installed](https://www.ruby-lang.org/en/downloads/)
 - Bundler [installed](https://bundler.io/)
 
-### Install
-- Get a local copy of the [game](https://github.com/fivan18/tic-tac-toe)
-- Inside the root directory of the game run `bundle install` on the command line
+### install
+Get a [project's](https://github.com/fivan18/tic-tac-toe) local copy
+
+    $ git clone https://github.com/fivan18/tic-tac-toe.git
+
+Inside the project's root directory run the next command
+
+    $ bundle install
 
 ## Instructions to play the game
-1. Inside the root directory of the game run `bin/main.rb`
+1. Inside the game's root directory run `bin/main.rb`
   ```
     $ bin/main.rb 
     Get start with Tic Tac Toe
